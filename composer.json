@@ -1,0 +1,21 @@
+{
+    "name": "heinthanth/heinthanth",
+    "description": "Personal Portfolio PHP MVC Framework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Hein Thanth",
+            "email": "official.heinthanth@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "App/"
+        },
+        "files": [
+            "Core/Helper.php"
+        ]
+    }
+}
