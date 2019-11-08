@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use Core\Controller;
+use eftec\bladeone\BladeOne;
 
 class PagesController extends Controller
 {
     public function index()
     {
-        echo "Hello, World!";
+        return view("hello", ["engine" => "Blade Engine"]);
     }
 }

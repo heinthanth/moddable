@@ -1,0 +1,6 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('body'); ?>
+<h1>Hello, World - extending master layout with <?php echo static::e($engine); ?></h1>
+<?php $this->stopSection(); ?>
+<?php if (@$_shouldextend[1]) { echo $this->runChild('template'); } ?>

@@ -8,7 +8,9 @@
             "email": "official.heinthanth@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "eftec/bladeone": "^3.31"
+    },
     "autoload": {
         "psr-4": {
             "Core\\": "Core/",
