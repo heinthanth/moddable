@@ -1,15 +1,13 @@
 <?php
 
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use App\Controller\PageController;
 use Symfony\Component\HttpFoundation\Response;
+use Moddable\Framework\Routing\Router;
 
-return function (RoutingConfigurator $routes) {
-	$routes->add("home", "/")->controller([PageController::class, 'index']);
+$router = new Router();
 
-	$routes->add("closure", "/closure")->controller(function () {
-		return new Response("Works with closure!");
-	});
+$router->get("/", "PageController@index", "home");
+$router->get("/closure", function () {
+	return new Response("works with closures!");
+}, "closure");
 
-	$routes->add("error", "/throw")->controller([PageController::class, "throw"]);
-};
+return $router;

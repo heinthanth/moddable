@@ -9,7 +9,13 @@ class PageController
 {
 	public function index()
 	{
-		return new Response("It works!");
+		$str = $this->test();
+		return new Response("It $str");
+	}
+
+	public function test()
+	{
+		return "works!";
 	}
 
 	public function throw()
