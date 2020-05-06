@@ -18,6 +18,8 @@ Build your website with Moddable MVC.
 $ git clone https://github.com/heinthanth/moddable
 $ cd moddable
 $ composer install
+
+$ symfony server:start --port=8000 --passthru=index.php || php -S localhost:8000 -t public/
 ```
 
-And Hack it!
+Access your website at http://localhost:8000 && Hack it!

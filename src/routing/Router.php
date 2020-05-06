@@ -2,8 +2,9 @@
 
 namespace Moddable\Framework\Routing;
 
-use Symfony\Component\Routing\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouteCollection;
+use Moddable\Framework\Routing\Route;
 
 class Router
 {
@@ -18,29 +19,17 @@ class Router
 	}
 
 	/**
-	 * register as GET
+	 * add route to collection
 	 */
-	public function get(string $uri, $action, string $name = "")
+	public function add(Route $route): void
 	{
-		if (is_string($action)) {
-			$this->RegisterWithString($uri, $action, $name);
-		} else if (is_callable($action)) {
-			$this->RegisterWithCallback($uri, $action, $name);
-		}
+		$this->routes->add($route->name, $route->toSymfony());
 	}
 
-	private function RegisterWithString(string $uri, string $action, string $name)
-	{
-		list($class, $method) = explode("@", $action, 2);
-		$this->routes->add($name, new Route($uri, ["_controller" => "App\\Controller\\$class::$method"]));
-	}
-
-	private function RegisterWithCallback(string $uri, callable $action, string $name)
-	{
-		$this->routes->add($name, new Route($uri, ["_controller" => $action]));
-	}
-
-	public function generate()
+	/**
+	 * get route collection
+	 */
+	public function getCollection(): RouteCollection
 	{
 		return $this->routes;
 	}

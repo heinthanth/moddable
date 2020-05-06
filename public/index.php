@@ -12,7 +12,7 @@ $router = include __DIR__ . "/../routes/web.php";
 $request = Request::createFromGlobals();
 
 // initialize container
-$container = new Container($router->generate());
+$container = new Container($router);
 
 $app = $container->bootstrap();
 $app->get("application")->handle($request)->send();
