@@ -1,22 +1,23 @@
-# GO-framework
-`Grab-your-Own` PHP mini-mvc-framework.
+# Moddable
 
-## Installation
-* Clone this repository and run `composer install`
-* rename env.example.php to env.php
-* For Apache, `mod_rewrite` should be enabled.
-* Directory `Resource/cache` should be writable.
+Simple, moddable PHP micro-framework based on Symfony
 
-## Notes
-* Use [`BladeOne`](https://github.com/EFTEC/BladeOne) Blade Engine for View
-* This Framework doesn't contain everything out of the box. Just a guideline and Structure for MVC PHP projects
+```
+  __  __  __     _    _ _ _  _    _ ____
+ |  \/  |/  \ __| |__| | | || |__/ |__ /
+ | |\/| | () / _` / _` |_  _| '_ \ ||_ \
+ |_|  |_|\__/\__,_\__,_| |_||_.__/_|___/
 
-## Todos
-* documentation
+```
 
-## Conclusion
-It's just-for-fun project and mini-framework written in MVC-design-pattern for my portfolio.<br>
-Thank and Respect to All Teachers all over the world (Youtube, StacksOverflow, Blogs, etc)<br>
-<br>
-Best Regards,<br>
-Hein Thanth (@heinthanth)
+Build your website with Moddable MVC.
+
+## Development
+
+```shell
+$ git clone https://github.com/heinthanth/moddable
+$ cd moddable
+$ composer install
+```
+
+And Hack it!

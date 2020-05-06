@@ -1,23 +1,25 @@
 {
-    "name": "heinthanth/heinthanth",
-    "description": "Personal Portfolio PHP MVC Framework",
+    "name": "heinthanth/moddable",
+    "description": "Simple, moddable PHP micro-framework",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Hein Thanth",
-            "email": "official.heinthanth@gmail.com"
+            "email": "contact@heinthanth.com"
         }
     ],
     "require": {
-        "eftec/bladeone": "^3.31"
+        "symfony/http-foundation": "^5.0",
+        "symfony/routing": "^5.0",
+        "symfony/http-kernel": "^5.0",
+        "symfony/config": "^5.0",
+        "symfony/dependency-injection": "^5.0"
     },
     "autoload": {
         "psr-4": {
-            "Core\\": "Core/",
-            "App\\": "App/"
-        },
-        "files": [
-            "Core/Helper.php"
-        ]
+            "App\\": "app/",
+            "Moddable\\Framework\\": "src/"
+        }
     }
 }
