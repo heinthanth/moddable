@@ -19,5 +19,6 @@ $router->add(
 		return new Response("Hi, your are #$id");
 	}))->name("post")->methods(["POST"])
 );
+$router->add((new Route("/throw", "PageController@throw"))->name("error"));
 
 return $router->getCollection();

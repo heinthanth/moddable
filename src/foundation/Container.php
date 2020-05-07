@@ -3,6 +3,8 @@
 namespace Moddable\Framework\Foundation;
 
 use Moddable\Framework\Foundation\Application;
+use Moddable\Framework\Http\Middleware;
+use Moddable\Framework\Service\MiddlewareServiceProvider;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -17,13 +19,25 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Container
 {
-
+	/**
+	 * Route collection to be registered
+	 */
 	private RouteCollection $routes;
+
+	/**
+	 * Global middlewares
+	 */
+	private array $globalMiddlewares;
+
+	/**
+	 * service Container
+	 */
 	private ContainerBuilder $builder;
 
-	public function __construct(RouteCollection $routes)
+	public function __construct(RouteCollection $routes, $globalMiddlewares)
 	{
 		$this->routes = $routes;
+		$this->globalMiddlewares = $globalMiddlewares;
 		$this->builder = new ContainerBuilder();
 	}
 
@@ -41,10 +55,13 @@ class Container
 			->setArguments([new Reference('matcher'), new Reference('request_stack')]);
 		$this->builder->register('listener.exception', ErrorListener::class)
 			->setArguments(['Moddable\Framework\Handler\ErrorController::exception']);
+		$this->builder->register('listener.middleware', MiddlewareServiceProvider::class)
+			->setArguments([$this->globalMiddlewares]);
 
 		$this->builder->register('dispatcher', EventDispatcher::class)
 			->addMethodCall('addSubscriber', [new Reference('listener.router')])
-			->addMethodCall('addSubscriber', [new Reference('listener.exception')]);
+			->addMethodCall('addSubscriber', [new Reference('listener.exception')])
+			->addMethodCall('addSubscriber', [new Reference('listener.middleware')]);
 
 		$this->builder->register('application', Application::class)
 			->setArguments([
